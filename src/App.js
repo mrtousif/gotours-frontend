@@ -15,6 +15,7 @@ import Signup from "./pages/Signup";
 import Tour from "./pages/Tour";
 import UserProvider from "./contexts/UserProvider";
 import NotFound from "./pages/NotFound";
+import { Provider } from "use-http";
 
 // function PrivateRoute({ children, ...rest }) {
 //     // let auth = useAuth();
@@ -53,25 +54,31 @@ function ScrollToTop() {
 function App() {
     return (
         <div>
-            <Router>
-                <ScrollToTop />
-                <UserProvider>
-                    <NavBar />
+            <Provider url="https://gotours-touring-app-101.herokuapp.com/api/v1">
+                <Router>
+                    <ScrollToTop />
+                    <UserProvider>
+                        <NavBar />
 
-                    <Switch>
-                        <Route exact path="/" render={(props) => <Home {...props} />} />
-                        {/* <ScrollToTop> */}
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/signup" component={Signup} />
-                        <Route exact path="/tours/:id" component={Tour} />
-                        <Route path="*" component={NotFound} />
+                        <Switch>
+                            <Route
+                                exact
+                                path="/"
+                                render={(props) => <Home {...props} />}
+                            />
+                            {/* <ScrollToTop> */}
+                            <Route exact path="/login" component={Login} />
+                            <Route exact path="/signup" component={Signup} />
+                            <Route exact path="/tours/:id" component={Tour} />
+                            <Route path="*" component={NotFound} />
 
-                        {/* </ScrollToTop> */}
-                    </Switch>
+                            {/* </ScrollToTop> */}
+                        </Switch>
 
-                    <Copyright />
-                </UserProvider>
-            </Router>
+                        <Copyright />
+                    </UserProvider>
+                </Router>
+            </Provider>
         </div>
     );
 }

@@ -48,7 +48,7 @@ export default function SignUp(props) {
     const userCtx = React.useContext(UserProvider.context);
     //   const [errMsg, setErrMsg] = useState(null)
     //https://gotours-touring-app-101.herokuapp.com
-    const { post, loading, error } = useFetch(`http://localhost:5000/api/v1/users`, {
+    const { post, loading, error } = useFetch(`/users`, {
         credentials: "include",
     });
 
