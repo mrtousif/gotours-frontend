@@ -5,6 +5,7 @@ import {
     Route,
     useLocation,
     // withRouter,
+    Redirect,
 } from "react-router-dom";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
@@ -13,6 +14,29 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Tour from "./pages/Tour";
 import UserProvider from "./contexts/UserProvider";
+
+function PrivateRoute({ children, ...rest }) {
+    // let auth = useAuth();
+    const auth = {};
+
+    return (
+        <Route
+            {...rest}
+            render={({ location }) =>
+                auth.user ? (
+                    children
+                ) : (
+                    <Redirect
+                        to={{
+                            pathname: "/login",
+                            state: { from: location },
+                        }}
+                    />
+                )
+            }
+        />
+    );
+}
 
 function ScrollToTop() {
     const { pathname } = useLocation();
