@@ -7,7 +7,7 @@ import { Container, Grid } from "@material-ui/core";
 // import NavBar from "../components/NavBar"
 // import TopLayout from "../components/TopLayout"
 // import SEO from "../components/seo"
-// import useFetch from "use-http";
+import useFetch from "use-http";
 // import Loading from "../components/Loading";
 import TourCard from "../components/TourCard";
 import tours from "../data/toursData";
@@ -16,7 +16,7 @@ export default function Home() {
     // const [tours, setTours] = React.useState([]);
     // const options = {}; // these options accept all native `fetch` options
     // the last argument below [] means it will fire onMount (GET by default)
-    const { data = [] } = useFetch("/tours", options, []);
+    const { data = [] } = useFetch("/tours", {}, []);
 
     console.log(data);
     // if (error) return "ERROR :(";
