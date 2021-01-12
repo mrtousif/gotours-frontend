@@ -5,7 +5,7 @@ import {
     Route,
     useLocation,
     // withRouter,
-    Redirect,
+    // Redirect,
 } from "react-router-dom";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
@@ -14,29 +14,30 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Tour from "./pages/Tour";
 import UserProvider from "./contexts/UserProvider";
+import NotFound from "./pages/NotFound";
 
-function PrivateRoute({ children, ...rest }) {
-    // let auth = useAuth();
-    const auth = {};
+// function PrivateRoute({ children, ...rest }) {
+//     // let auth = useAuth();
+//     const auth = {};
 
-    return (
-        <Route
-            {...rest}
-            render={({ location }) =>
-                auth.user ? (
-                    children
-                ) : (
-                    <Redirect
-                        to={{
-                            pathname: "/login",
-                            state: { from: location },
-                        }}
-                    />
-                )
-            }
-        />
-    );
-}
+//     return (
+//         <Route
+//             {...rest}
+//             render={({ location }) =>
+//                 auth.user ? (
+//                     children
+//                 ) : (
+//                     <Redirect
+//                         to={{
+//                             pathname: "/login",
+//                             state: { from: location },
+//                         }}
+//                     />
+//                 )
+//             }
+//         />
+//     );
+// }
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -63,6 +64,8 @@ function App() {
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/signup" component={Signup} />
                         <Route exact path="/tours/:id" component={Tour} />
+                        <Route path="*" component={NotFound} />
+
                         {/* </ScrollToTop> */}
                     </Switch>
 
