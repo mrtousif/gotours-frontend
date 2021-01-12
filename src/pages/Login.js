@@ -46,7 +46,7 @@ export default function Login(props) {
     //   const [errMsg, setErrMsg] = useState("")
     const userCtx = React.useContext(UserProvider.context);
     //https://gotours-touring-app-101.herokuapp.com
-    const { post, loading, error } = useFetch(`http://localhost:5000/api/v1/users`, {
+    const { post, loading, error } = useFetch(`/users`, {
         credentials: "include",
     });
     //   const [loginUser, { loading }] = useMutation(LOGIN_INPUT, {

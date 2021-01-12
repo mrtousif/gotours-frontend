@@ -150,12 +150,7 @@ export default function TourTemplate(props) {
     //   console.log(props)
     // const [tourData, setTourData] = React.useState(null);
     // const [funcCalled, setFuncCalled] = React.useState(false);
-    //https://gotours-touring-app-101.herokuapp.com
-    const { loading, error, data = {} } = useFetch(
-        `http://localhost:5000/api/v1/tours/${id}`,
-        {},
-        []
-    );
+    const { loading, error, data = {} } = useFetch(`/tours/${id}`, {}, []);
 
     if (error) return "ERROR :(";
     if (loading) return <Loading />;
@@ -174,7 +169,7 @@ export default function TourTemplate(props) {
         try {
             // get checkout session
             const res = await fetch(
-                `http://localhost:5000/api/v1/bookings/checkout-session/${tourId}`,
+                `https://gotours-touring-app-101.herokuapp.com/api/v1/bookings/checkout-session/${tourId}`,
                 {
                     credentials: "include",
                 }

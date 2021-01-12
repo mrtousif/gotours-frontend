@@ -16,12 +16,9 @@ export default function Home() {
     // const [tours, setTours] = React.useState([]);
     // const options = {}; // these options accept all native `fetch` options
     // the last argument below [] means it will fire onMount (GET by default)
-    // const { loading, error, data:tours = [] } = useFetch(
-    //     "https://gotours-touring-app-101.herokuapp.com/api/v1/tours",
-    //     options,
-    //     []
-    // );
+    const { data = [] } = useFetch("/tours", options, []);
 
+    console.log(data);
     // if (error) return "ERROR :(";
     // if (loading) return <Loading />;
 
