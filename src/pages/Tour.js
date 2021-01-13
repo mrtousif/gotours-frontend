@@ -154,9 +154,9 @@ export default function TourTemplate(props) {
 
     if (error) return "ERROR :(";
     if (loading) return <Loading />;
-    // if (data) {
-    //     console.log(data);
-    // }
+    if (data) {
+        console.log(data);
+    }
     const { doc } = data.data;
 
     const bookTour = async () => {

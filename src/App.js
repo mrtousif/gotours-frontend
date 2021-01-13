@@ -51,10 +51,17 @@ function ScrollToTop() {
     return null;
 }
 
+let url = "";
+if (process.env.NODE_ENV === "production") {
+    url = "https://gotours-touring-app-101.herokuapp.com/api/v1";
+} else {
+    url = "http://localhost:5000/api/v1";
+}
+
 function App() {
     return (
         <div>
-            <Provider url="https://gotours-touring-app-101.herokuapp.com/api/v1">
+            <Provider url={url}>
                 <Router>
                     <ScrollToTop />
                     <UserProvider>

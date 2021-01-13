@@ -5,14 +5,14 @@ import "./map.css";
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
 
 export default class Mapbox extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            lng: 5,
-            lat: 34,
-            zoom: 2,
-        };
-    }
+    // constructor(props) {
+    //     super(props);
+    // this.state = {
+    //     lng: 5,
+    //     lat: 34,
+    //     zoom: 2,
+    // };
+    // }
 
     componentDidMount() {
         // console.log(this.mapContainer);
@@ -23,7 +23,7 @@ export default class Mapbox extends Component {
             scrollZoom: false,
         });
         // Add navigation control (the +/- zoom buttons)
-        map.addControl(new mapboxgl.NavigationControl(), "top-right");
+        // map.addControl(new mapboxgl.NavigationControl(), "top-right");
         // area that will be displayed on the map
         const bounds = new mapboxgl.LngLatBounds();
 
