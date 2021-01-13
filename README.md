@@ -4,11 +4,12 @@ https://gotours-frontend.vercel.app
 
 ![Gotours](/gotours.png)
 
-## Fetches data from my gotours api
+Fetches data from [my gotours api](https://github.com/CoderTousif/gotours)
+Checkout the repo https://github.com/CoderTousif/gotours
 
 [Gotours API](https://gotours-touring-app-101.herokuapp.com/api/v1/tours)
 
-## Made with React, Material UI, react-hook-from, Context API for user state management
+### Made with React, Material UI, react-hook-from, Context API for user state management
 
 Used Cloudinary to host the images
 
