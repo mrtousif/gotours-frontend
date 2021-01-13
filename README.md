@@ -1,4 +1,16 @@
-# Getting Started with Create React App
+# Tour booking website
+
+https://gotours-frontend.vercel.app
+
+![Gotours](/gotours.png)
+
+## Fetches data from my gotours api
+
+[Gotours API](https://gotours-touring-app-101.herokuapp.com/api/v1/tours)
+
+## Made with React, Material UI, react-hook-from, Context API for user state management
+
+Used Cloudinary to host the images
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
