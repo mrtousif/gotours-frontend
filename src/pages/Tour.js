@@ -375,8 +375,8 @@ export default function TourTemplate(props) {
                                     What are you waiting for?
                                 </Typography>
                                 <Typography>
-                                    5 days. 1 adventure. Infinite memories. Make it yours
-                                    today!
+                                    {doc.duration} days. 1 adventure. Infinite memories.
+                                    Make it yours today!
                                 </Typography>
                             </Grid>
                             <Grid item>
