@@ -6,20 +6,19 @@ import {
     TextField,
     FormControlLabel,
     Checkbox,
-    //   Link,
+    Link,
     Grid,
     Typography,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
-// import { Link  } from "react-router-dom"
 import { useForm } from "react-hook-form";
 // import { useMutation } from "@apollo/client"
-// import Notification from "../components/Notification"
+import Alert from "../components/Alert";
 import Loading from "../components/Loading";
 import UserProvider from "../contexts/UserProvider";
 // import { SIGNUP_INPUT } from "../graphql/graphql"
-import Link from "../components/Link";
+// import Link from "../components/Link";
 import useFetch from "use-http";
 
 const useStyles = makeStyles((theme) => ({
@@ -46,9 +45,9 @@ export default function SignUp(props) {
     const { handleSubmit, register, errors } = useForm();
     const classes = useStyles();
     const userCtx = React.useContext(UserProvider.context);
-    //   const [errMsg, setErrMsg] = useState(null)
+    const [errMsg, setErrMsg] = React.useState(null);
     //https://gotours-touring-app-101.herokuapp.com
-    const { post, loading, error } = useFetch(`/users`, {
+    const { post, loading, error, response } = useFetch(`/users`, {
         credentials: "include",
     });
 
@@ -68,9 +67,6 @@ export default function SignUp(props) {
     //     },
     //   })
 
-    if (loading) return <Loading />;
-    if (error) return "ERROR :(";
-
     // React.useEffect(() => {
     //     if (userCtx.user) {
     //         window.open("/profile", "_self");
@@ -78,27 +74,31 @@ export default function SignUp(props) {
     // });
 
     const onSubmit = handleSubmit(async (data) => {
-        try {
-            const { name, email, password } = data;
+        const { name, email, password } = data;
 
-            const res = await post("/signup", {
-                name,
-                email,
-                password,
-                confirmPassword: password,
-            });
+        const res = await post("/signup", {
+            name,
+            email,
+            password,
+            confirmPassword: password,
+        });
+        // console.log(res);
+        if (res.status === "fail") {
+            setErrMsg(res.message);
+        }
+
+        if (response.ok) {
             userCtx.login({ ...res.data, token: res.token });
             props.history.push("/");
-            // console.log(res);
-        } catch (err) {
-            console.error(err);
         }
     });
+
+    if (loading) return <Loading />;
 
     return (
         // <TopLayout>
         <Container component="main" maxWidth="xs">
-            {/* <Notification message={errMsg} /> */}
+            {error && <Alert type="error" message={errMsg} delay="4000" />}
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />

@@ -44,7 +44,6 @@ function ScrollToTop() {
     const { pathname } = useLocation();
 
     React.useEffect(() => {
-        console.log(pathname);
         window.scrollTo(0, 0);
     }, [pathname]);
 
@@ -54,7 +53,7 @@ function ScrollToTop() {
 let url = "";
 if (process.env.NODE_ENV === "production") {
     url = "https://gotours-touring-app-101.herokuapp.com/api/v1";
-} else {
+} else if (process.env.NODE_ENV === "development") {
     url = "http://localhost:5000/api/v1";
 }
 

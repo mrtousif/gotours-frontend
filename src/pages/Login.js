@@ -6,13 +6,14 @@ import {
     TextField,
     Grid,
     Typography,
+    Link,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
-import Link from "../components/Link";
+// import Link from "../components/Link";
 import { useForm } from "react-hook-form";
 // import { useMutation } from "@apollo/client"
-// import Notification from "../components/Notification"
+import Alert from "../components/Alert";
 import Loading from "../components/Loading";
 // import Link from "../components/Link"
 import UserProvider from "../contexts/UserProvider";
@@ -43,10 +44,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Login(props) {
     const classes = useStyles();
     const { handleSubmit, register, errors } = useForm();
-    //   const [errMsg, setErrMsg] = useState("")
+    const [errMsg, setErrMsg] = React.useState("");
     const userCtx = React.useContext(UserProvider.context);
     //https://gotours-touring-app-101.herokuapp.com
-    const { post, loading, error } = useFetch(`/users`, {
+    const { post, loading, error, response } = useFetch(`/users`, {
         credentials: "include",
     });
     //   const [loginUser, { loading }] = useMutation(LOGIN_INPUT, {
@@ -66,28 +67,30 @@ export default function Login(props) {
     //   })
 
     const onSubmit = handleSubmit(async (data) => {
-        try {
-            const { email, password } = data;
-            console.log(data);
-            const res = await post("/login", {
-                email,
-                password,
-            });
+        const { email, password } = data;
+        // console.log(data);
+        const res = await post("/login", {
+            email,
+            password,
+        });
+
+        // console.log(res);
+        if (res.status === "fail") {
+            setErrMsg(res.message);
+        }
+
+        if (response.ok) {
+            console.log(await response.json());
             userCtx.login({ ...res.data, token: res.token });
             props.history.push("/");
-            // console.log(res);
-        } catch (err) {
-            console.error(err);
         }
     });
 
     if (loading) return <Loading />;
-
     return (
         // <TopLayout>
         <Container component="main" maxWidth="xs">
-            {/* <Notification message={errMsg} /> */}
-            {error && "ERROR:("}
+            {error && <Alert type="error" message={errMsg} delay="4000" />}
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
