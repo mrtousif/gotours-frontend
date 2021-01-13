@@ -1,6 +1,6 @@
 # Tour booking website
 
-https://gotours-frontend.vercel.app
+https://gotours.vercel.app
 
 ![Gotours](/gotours.png)
 
