@@ -6,7 +6,6 @@ import {
     TextField,
     FormControlLabel,
     Checkbox,
-    Link,
     Grid,
     Typography,
 } from "@material-ui/core";
@@ -18,7 +17,7 @@ import Alert from "../components/Alert";
 import Loading from "../components/Loading";
 import UserProvider from "../contexts/UserProvider";
 // import { SIGNUP_INPUT } from "../graphql/graphql"
-// import Link from "../components/Link";
+import Link from "../components/Link";
 import useFetch from "use-http";
 
 const useStyles = makeStyles((theme) => ({
