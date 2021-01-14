@@ -6,7 +6,6 @@ import {
     TextField,
     Grid,
     Typography,
-    Link,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { makeStyles } from "@material-ui/core/styles";
@@ -15,7 +14,7 @@ import { useForm } from "react-hook-form";
 // import { useMutation } from "@apollo/client"
 import Alert from "../components/Alert";
 import Loading from "../components/Loading";
-// import Link from "../components/Link"
+import Link from "../components/Link";
 import UserProvider from "../contexts/UserProvider";
 // import { LOGIN_INPUT } from "../graphql/graphql"
 // import TopLayout from "../components/TopLayout"
@@ -155,7 +154,7 @@ export default function Login(props) {
                 </form>
                 <Grid container>
                     <Grid item xs>
-                        <Link href="#" variant="body2">
+                        <Link to="#" variant="body2">
                             Forgot password?
                         </Link>
                     </Grid>
