@@ -18,7 +18,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "use-http": "^1.0.16",
-    "use-local-storage-state": "^6.0.3",
+    "use-local-storage-state": "^9.0.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
